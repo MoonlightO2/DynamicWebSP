@@ -7,7 +7,7 @@
 </head>
 <body>
 <h1>MyFlix by Shashini - Upload Page</h1>
-<img src="http://34.67.227.77/media/pics/MyFlix by Shashini logo.PNG" alt="MyFlix by Shashini.. The ultimate streaming experience"><br>
+<img src="http://34.67.227.77/media/pics/logo_myflix.PNG" alt="MyFlix by Shashini.. The ultimate streaming experience"><br>
 <h4>The ultimate streaming experience</h4><br>
 
 <!-- The form -->
@@ -16,11 +16,11 @@
   <button type="submit"><i class="fa fa-search"></i></button>
 </form><br>
 
-<Form action ="upload.py" method="post" enctype ="multipart/form-data">
-Select a file to upload<br>
-<Input type="file" name="fuResume" id="fuResume">
-<Input type="Submit" value="Upload File">
-</Form><br>
+<form method='POST' enctype='multipart/form-data'>
+{{form.hidden_tag()}}
+{{form.file()}}
+{{form.submit()}}
+</form>
 
 <div>
 <a href="index.html">Home page</a><br>
