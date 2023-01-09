@@ -4,11 +4,13 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="myflixstyle.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />        
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 <title>MyFlix by Shashini</title>
 </head>
 <body>
 <h1>MyFlix by Shashini - Upload Page</h1>
-<img src="http://34.67.227.77/media/pics/logo_myflix.PNG" alt="MyFlix by Shashini.. The ultimate streaming experience" align = right><br>
+<img src="http://34.67.227.77/media/pics/logo_myflix.PNG" alt="MyFlix by Shashini.. The ultimate streaming experience" width="20" height="20" style="float:left"><br>
 <h4>The ultimate streaming experience</h4><br>
 
 <!-- The form -->
@@ -17,12 +19,37 @@
   <button type="submit"><i class="fa fa-search"></i></button>
 </form><br>
 
-<form method='POST' enctype='multipart/form-data'>
-{{form.hidden_tag()}}
-{{form.file()}}
-{{form.submit()}}
-</form>
-
+<div class="container">
+<div class="row">
+    <h2>Select a file to upload</h2>
+    <p>
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            <ul>
+            {% for message in messages %}
+              <li>{{ message }}</li>
+            {% endfor %}
+            </ul>
+          {% endif %}
+        {% endwith %}
+    </p>
+    {% if filename %}
+        <div>
+            <img src="{{ url_for('display_image', filename=filename) }}">
+        </div>
+    {% endif %}
+    <form method="post" action="/" enctype="multipart/form-data">
+        <dl>
+            <p>
+                <input type="file" name="file" class="form-control" autocomplete="off" required>
+            </p>
+        </dl>
+        <p>
+            <input type="submit" value="Submit" class="btn btn-info">
+        </p>
+    </form>
+</div>
+</div>
 <div>
 <a href="index.html">Home page</a><br>
 <a href="Login.html">Login page</a><br>
